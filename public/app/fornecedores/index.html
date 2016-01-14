@@ -1,6 +1,23 @@
 <div class="container-fluid" ng-controller="FornecedorIndexController">
 
     <div class="row">
+        <div class="col-sm-2">
+            <select class="form-control"  ng-model="filtro.chave" ng-change="atualizarLista()">
+                <option value="">Tudo</option>
+                <option value="nome">Nome</option>
+                <option value="email">Email</option>
+                <option value="telefone">Telefone</option>
+            </select>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <input type="text" class="form-control" id="exampleInputPassword1" placeholder="filtro" ng-change="atualizarLista()"
+                       ng-hide="filtro.chave==''" ng-model="filtro.valor">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
 
         <div class="col-sm-12">
             <table id="fornecedores" class="table">

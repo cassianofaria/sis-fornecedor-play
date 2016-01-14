@@ -8,20 +8,27 @@ appFornecedores.controller("FornecedorIndexController", ['$scope', '$location', 
 
     $scope.fornecedores = [];
 
-    var atualizarLista = function() {
+    $scope.filtro = {
+        'chave': "",
+        'valor': ""
+    };
+
+    $scope.atualizarLista = function() {
         FornecedorFactory.query(
+
+            $scope.filtro,
 
             function(response) {
                 $scope.fornecedores = response;
             },
 
             function(response) {
-                console.log(response)
+                console.log(response);
             }
         );
     };
 
-    atualizarLista();
+    $scope.atualizarLista();
 
     $scope.removeFornecedor = function (idFornecedor) {
 
@@ -40,7 +47,7 @@ appFornecedores.controller("FornecedorIndexController", ['$scope', '$location', 
                     FornecedorFactory.delete({'id': idFornecedor}).$promise.then(
 
                         function(response) {
-                            atualizarLista();
+                            $scope.atualizarLista()
                         },
 
                         function(response) {
@@ -70,7 +77,8 @@ appFornecedores.controller("FornecedorNewController", ['$scope', '$location', 'F
             },
 
             function(response) {
-                console.log(response)
+                console.log(response.data.message);
+                alert(response.data.message);
             }
         );
     };

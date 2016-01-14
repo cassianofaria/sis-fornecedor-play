@@ -35,6 +35,10 @@ public class Fornecedor extends Model  {
 	private Boolean ativo;
 	
 	public static Model.Finder<Long, Fornecedor> finder = new Model.Finder<Long, Fornecedor>(Fornecedor.class);
+	
+	public static Fornecedor findByName(String name) {
+		return finder.where().eq("nome", name).findUnique();
+	}
 
 	public Long getId() {
 		return id;
