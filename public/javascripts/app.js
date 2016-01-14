@@ -5,7 +5,8 @@ var app = angular.module("app", [
     'ngRoute',
     'ngResource',
     'oitozero.ngSweetAlert',
-    'app.fornecedores'
+    'app.fornecedores',
+    'app.segmentos'
 ]);
 
 
@@ -19,6 +20,7 @@ app.config(['$routeProvider', function ($routeProvider) {
         templateUrl: 'app/home/index.html'
     });
 
+    // fornecedores
     $routeProvider.when('/fornecedores', {
         templateUrl: 'app/fornecedores/index.html',
         controller: 'FornecedorIndexController'
@@ -34,6 +36,27 @@ app.config(['$routeProvider', function ($routeProvider) {
         controller: 'FornecedorEditController',
         resolve: {
             fornecedorId: function ($route) {
+                return $route.current.params.id;
+            }
+        }
+    });
+
+    // segmentos
+    $routeProvider.when('/segmentos', {
+        templateUrl: 'app/segmentos/index.html',
+        controller: 'SegmentoIndexController'
+    });
+
+    $routeProvider.when('/segmentos/new', {
+        templateUrl: 'app/segmentos/new.html',
+        controller: 'SegmentoNewController'
+    });
+
+    $routeProvider.when('/segmentos/:id/edit', {
+        templateUrl: 'app/segmentos/edit.html',
+        controller: 'SegmentoEditController',
+        resolve: {
+            segmentoId: function ($route) {
                 return $route.current.params.id;
             }
         }

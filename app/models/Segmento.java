@@ -36,4 +36,8 @@ public class Segmento extends Model {
 	
 	public static Model.Finder<Long, Segmento> finder = new Model.Finder<Long, Segmento>(Segmento.class);
 	
+	public static Segmento findByName(String name) {
+		return finder.where().eq("nome", name).findUnique();
+	}
+	
 }

@@ -157,9 +157,3 @@ appFornecedores.factory('FornecedorFactory', ['$http', '$q', '$resource', functi
     return $resource("http://localhost:9000/fornecedores/:id",{},  {'update':{method:'PUT' }});
 
 }]);
-
-appFornecedores.factory('SegmentoFactory', ['$http', '$q', '$resource', function($http, $q, $resource) {
-
-    return $resource("http://localhost:9000/segmentos/:id",{},  {'update':{method:'PUT' }});
-
-}]);
