@@ -1,13 +1,19 @@
 package models;
 
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Model;
+import com.avaje.ebean.SqlRow;
+
+import dto.FornecedorDTO;
 
 @Entity
 @Table(name="fornecedor")
@@ -38,6 +44,23 @@ public class Fornecedor extends Model  {
 	
 	public static Fornecedor findByName(String name) {
 		return finder.where().eq("nome", name).findUnique();
+	}
+	
+	private static FornecedorDTO parse(SqlRow row) {
+		FornecedorDTO fornecedor = new FornecedorDTO();
+		
+		fornecedor.setId(row.getLong("id"));
+		fornecedor.setNome(row.getString("nome"));
+		
+		return fornecedor;
+	}
+	
+	public static List<FornecedorDTO> findLight() {
+		String sql = "SELECT id, nome from fornecedor";
+		
+		return Ebean.createSqlQuery(sql).findList().stream()
+			.map(item -> parse(item))
+			.collect(Collectors.toList());
 	}
 
 	public Long getId() {
