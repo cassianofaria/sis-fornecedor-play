@@ -16,3 +16,6 @@ GET		/fornecedores/:id			controllers.Fornecedores.find(id : Long)
 POST	/fornecedores				controllers.Fornecedores.save()
 PUT		/fornecedores/:id			controllers.Fornecedores.update(id : Long)
 DELETE	/fornecedores/:id			controllers.Fornecedores.delete(id : Long)
+
+# Segmentos
+GET		/segmentos					controllers.Segmentos.all()

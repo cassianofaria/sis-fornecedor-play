@@ -61,11 +61,26 @@ appFornecedores.controller("FornecedorIndexController", ['$scope', '$location', 
 
 }]);
 
-appFornecedores.controller("FornecedorNewController", ['$scope', '$location', 'FornecedorFactory', function($scope, $location, FornecedorFactory) {
+appFornecedores.controller("FornecedorNewController", ['$scope', '$location', 'FornecedorFactory', 'SegmentoFactory', function($scope, $location, FornecedorFactory, SegmentoFactory) {
 
     $scope.fornecedor = {
-        'ativo': false
+        'ativo': false,
+        'segmento': null
     };
+
+    $scope.segmentos = [];
+
+    SegmentoFactory.query(
+
+        function(response) {
+            $scope.segmentos = response;
+        },
+
+        function(response) {
+            console.log(response);
+        }
+
+    );
 
     $scope.save = function () {
         $scope.fornecedor.dtCadastro = new Date();
@@ -126,5 +141,11 @@ appFornecedores.filter('linkEmail', ['$sce',function ($sce) {
 appFornecedores.factory('FornecedorFactory', ['$http', '$q', '$resource', function($http, $q, $resource) {
 
     return $resource("http://localhost:9000/fornecedores/:id",{},  {'update':{method:'PUT' }});
+
+}]);
+
+appFornecedores.factory('SegmentoFactory', ['$http', '$q', '$resource', function($http, $q, $resource) {
+
+    return $resource("http://localhost:9000/segmentos/:id",{},  {'update':{method:'PUT' }});
 
 }]);

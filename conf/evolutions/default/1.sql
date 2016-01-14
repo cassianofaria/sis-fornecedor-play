@@ -14,10 +14,18 @@ create table fornecedor (
   constraint pk_fornecedor primary key (id))
 ;
 
+create table segmento (
+  id                        bigserial not null,
+  nome                      varchar(255),
+  constraint pk_segmento primary key (id))
+;
+
 
 
 
 # --- !Downs
 
 drop table if exists fornecedor cascade;
+
+drop table if exists segmento cascade;
 
