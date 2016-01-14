@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.avaje.ebean.Ebean;
@@ -36,6 +37,10 @@ public class Fornecedor extends Model  {
 	
 	@Column(name="dt_atualizacao")
 	private Date dtAtualizacao;
+	
+	@Column(name="segmento")
+	@ManyToOne
+	private Segmento segmento;
 	
 	@Column(name="ativo")
 	private Boolean ativo;
@@ -109,6 +114,14 @@ public class Fornecedor extends Model  {
 
 	public void setDtAtualizacao(Date dtAtualizacao) {
 		this.dtAtualizacao = dtAtualizacao;
+	}
+	
+	public Segmento getSegmento() {
+		return segmento;
+	}
+
+	public void setSegmento(Segmento segmento) {
+		this.segmento = segmento;
 	}
 
 	public Boolean getAtivo() {

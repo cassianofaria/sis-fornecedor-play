@@ -100,9 +100,23 @@ appFornecedores.controller("FornecedorNewController", ['$scope', '$location', 'F
 
 }]);
 
-appFornecedores.controller("FornecedorEditController", ['$scope', '$location', 'FornecedorFactory', 'fornecedorId', function($scope, $location, FornecedorFactory, fornecedorId) {
+appFornecedores.controller("FornecedorEditController", ['$scope', '$location', 'FornecedorFactory', 'SegmentoFactory', 'fornecedorId', function($scope, $location, FornecedorFactory, SegmentoFactory, fornecedorId) {
 
     $scope.fornecedor = {};
+
+    $scope.segmentos = [];
+
+    SegmentoFactory.query(
+
+        function(response) {
+            $scope.segmentos = response;
+        },
+
+        function(response) {
+            console.log(response);
+        }
+
+    );
 
     FornecedorFactory.get({'id': fornecedorId}).$promise.then(
 

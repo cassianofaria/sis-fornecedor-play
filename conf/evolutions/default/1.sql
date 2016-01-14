@@ -10,6 +10,7 @@ create table fornecedor (
   telefone                  varchar(255),
   dt_cadastro               timestamp,
   dt_atualizacao            timestamp,
+  segmento_id               bigint,
   ativo                     boolean,
   constraint pk_fornecedor primary key (id))
 ;
@@ -20,6 +21,8 @@ create table segmento (
   constraint pk_segmento primary key (id))
 ;
 
+alter table fornecedor add constraint fk_fornecedor_segmento_1 foreign key (segmento_id) references segmento (id);
+create index ix_fornecedor_segmento_1 on fornecedor (segmento_id);
 
 
 
