@@ -10,7 +10,7 @@ import play.mvc.Result;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
-public class Fornecedores extends Controller{
+public class Fornecedores extends Controller {
 
 	public Result all() {
 		List<Fornecedor> fornecedores = Fornecedor.finder.all();
