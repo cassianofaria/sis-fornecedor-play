@@ -15,6 +15,12 @@ create table fornecedor (
   constraint pk_fornecedor primary key (id))
 ;
 
+create table produto (
+  id                        bigserial not null,
+  nome                      varchar(255),
+  constraint pk_produto primary key (id))
+;
+
 create table segmento (
   id                        bigserial not null,
   nome                      varchar(255),
@@ -29,6 +35,8 @@ create index ix_fornecedor_segmento_1 on fornecedor (segmento_id);
 # --- !Downs
 
 drop table if exists fornecedor cascade;
+
+drop table if exists produto cascade;
 
 drop table if exists segmento cascade;
 

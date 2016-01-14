@@ -2,9 +2,6 @@ package controllers;
 
 import java.util.List;
 
-import com.fasterxml.jackson.databind.JsonNode;
-
-import models.Fornecedor;
 import models.Segmento;
 import play.libs.Json;
 import play.mvc.BodyParser;
@@ -12,11 +9,26 @@ import play.mvc.Controller;
 import play.mvc.Result;
 import util.HttpException;
 
+import com.fasterxml.jackson.databind.JsonNode;
+
 public class Segmentos extends Controller {
 
 	public Result all() {
-		List<Segmento> segmentos = Segmento.finder.all();
+		String chaveFiltro = request().getQueryString("chave");
+		String chaveValor = request().getQueryString("valor");
 		
+		List<Segmento> segmentos = null;
+		
+		if (chaveFiltro.equals("") || chaveValor.equals("")) {
+			segmentos = Segmento.finder.all();
+		} else {			
+			segmentos = Segmento.finder
+					.where()
+					.ilike(chaveFiltro, "%" + chaveValor + "%")
+					.findList();
+		}
+		
+
 		return ok(Json.toJson(segmentos));
 	}
 
