@@ -6,5 +6,3 @@ target
 /.project
 /.settings
 /RUNNING_PID
-public/bower_components/
-public/node_modules/
