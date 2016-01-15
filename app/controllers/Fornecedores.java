@@ -11,8 +11,9 @@ import util.HttpException;
 
 import com.fasterxml.jackson.databind.JsonNode;
 
+//@With(SecurityAction.class)
 public class Fornecedores extends Controller {
-
+	
 	public Result all() {
 		String chaveFiltro = request().getQueryString("chave");
 		String chaveValor = request().getQueryString("valor");

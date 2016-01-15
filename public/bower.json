@@ -21,7 +21,8 @@
     "angular-resource": "~1.4.8",
     "ngSweetAlert": "angular-sweetalert#~1.1.0",
     "angular-route": "~1.4.8",
-    "bootstrap": "~3.3.6"
+    "bootstrap": "~3.3.6",
+    "ngstorage": "~0.3.10"
   },
   "resolutions": {
     "angular": "~1.4.8"

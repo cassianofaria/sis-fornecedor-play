@@ -27,6 +27,13 @@ create table segmento (
   constraint pk_segmento primary key (id))
 ;
 
+create table usuario (
+  id                        bigserial not null,
+  nome                      varchar(255),
+  senha                     varchar(255),
+  constraint pk_usuario primary key (id))
+;
+
 alter table fornecedor add constraint fk_fornecedor_segmento_1 foreign key (segmento_id) references segmento (id);
 create index ix_fornecedor_segmento_1 on fornecedor (segmento_id);
 
@@ -39,4 +46,6 @@ drop table if exists fornecedor cascade;
 drop table if exists produto cascade;
 
 drop table if exists segmento cascade;
+
+drop table if exists usuario cascade;
 

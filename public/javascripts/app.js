@@ -28,15 +28,23 @@ app.config(['$routeProvider', function ($routeProvider) {
 
     $routeProvider.when('/fornecedores/new', {
         templateUrl: 'app/fornecedores/new.html',
-        controller: 'FornecedorNewController'
+        controller: 'FornecedorNewController',
+        resolve: {
+            segmentos: function($route, SegmentoFactory) {
+                return SegmentoFactory.query().$promise;
+            }
+        }
     });
 
     $routeProvider.when('/fornecedores/:id/edit', {
         templateUrl: 'app/fornecedores/edit.html',
         controller: 'FornecedorEditController',
         resolve: {
-            fornecedorId: function ($route) {
-                return $route.current.params.id;
+            fornecedor: function ($route, FornecedorFactory, SegmentoFactory) {
+                return FornecedorFactory.get({'id': $route.current.params.id}).$promise;
+            },
+            segmentos: function($route, SegmentoFactory) {
+                return SegmentoFactory.query().$promise;
             }
         }
     });

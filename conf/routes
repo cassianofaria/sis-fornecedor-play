@@ -10,6 +10,9 @@ GET     /                           controllers.Application.index()
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
 
+# Usuários
+POST	/usuarios/login				controllers.Usuarios.login()
+
 # Fornecedores
 GET		/fornecedores				controllers.Fornecedores.all()
 GET		/fornecedores/:id			controllers.Fornecedores.find(id : Long)
@@ -19,7 +22,7 @@ DELETE	/fornecedores/:id			controllers.Fornecedores.delete(id : Long)
 
 # Segmentos
 GET		/segmentos					controllers.Segmentos.all()
-GET		/segmentos/:id			controllers.Segmentos.find(id : Long)
-POST	/segmentos				controllers.Segmentos.save()
-PUT		/segmentos/:id			controllers.Segmentos.update(id : Long)
-DELETE	/segmentos/:id			controllers.Segmentos.delete(id : Long)
+GET		/segmentos/:id				controllers.Segmentos.find(id : Long)
+POST	/segmentos					controllers.Segmentos.save()
+PUT		/segmentos/:id				controllers.Segmentos.update(id : Long)
+DELETE	/segmentos/:id				controllers.Segmentos.delete(id : Long)

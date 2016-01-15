@@ -61,14 +61,14 @@ appFornecedores.controller("FornecedorIndexController", ['$scope', '$location', 
 
 }]);
 
-appFornecedores.controller("FornecedorNewController", ['$scope', '$location', 'FornecedorFactory', 'SegmentoFactory', function($scope, $location, FornecedorFactory, SegmentoFactory) {
+appFornecedores.controller("FornecedorNewController", ['$scope', '$location', 'FornecedorFactory', 'SegmentoFactory','segmentos', function($scope, $location, FornecedorFactory, SegmentoFactory, segmentos) {
 
     $scope.fornecedor = {
         'ativo': false,
         'segmento': null
     };
 
-    $scope.segmentos = [];
+    $scope.segmentos = segmentos;
 
     SegmentoFactory.query(
 
@@ -100,34 +100,11 @@ appFornecedores.controller("FornecedorNewController", ['$scope', '$location', 'F
 
 }]);
 
-appFornecedores.controller("FornecedorEditController", ['$scope', '$location', 'FornecedorFactory', 'SegmentoFactory', 'fornecedorId', function($scope, $location, FornecedorFactory, SegmentoFactory, fornecedorId) {
+appFornecedores.controller("FornecedorEditController", ['$scope', '$location', 'FornecedorFactory', 'fornecedor', 'segmentos', function($scope, $location, FornecedorFactory, fornecedor, segmentos) {
 
-    $scope.fornecedor = {};
+    $scope.fornecedor = fornecedor;
 
-    $scope.segmentos = [];
-
-    SegmentoFactory.query(
-
-        function(response) {
-            $scope.segmentos = response;
-        },
-
-        function(response) {
-            console.log(response);
-        }
-
-    );
-
-    FornecedorFactory.get({'id': fornecedorId}).$promise.then(
-
-        function(response) {
-            $scope.fornecedor = response;
-        },
-
-        function(response) {
-            console.log(response)
-        }
-    );
+    $scope.segmentos = segmentos;
 
     $scope.update = function () {
         $scope.fornecedor.dtAtualizacao = new Date();
@@ -139,7 +116,7 @@ appFornecedores.controller("FornecedorEditController", ['$scope', '$location', '
             },
 
             function(response) {
-                console.log(response)
+                console.log(response);
             }
         );
     };

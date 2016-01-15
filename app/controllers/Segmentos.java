@@ -19,7 +19,7 @@ public class Segmentos extends Controller {
 		
 		List<Segmento> segmentos = null;
 		
-		if (chaveFiltro.equals("") || chaveValor.equals("")) {
+		if (chaveFiltro == null || chaveFiltro.isEmpty() || chaveValor == null || chaveValor.isEmpty()) {
 			segmentos = Segmento.finder.all();
 		} else {			
 			segmentos = Segmento.finder
