@@ -1,6 +1,9 @@
 /**
  * Created by cassiano on 12/01/16.
  */
+
+var application_url = 'http://localhost:9000/';
+
 var app = angular.module("app", [
     'ngRoute',
     'ngResource',

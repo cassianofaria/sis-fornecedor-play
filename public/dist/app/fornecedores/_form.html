@@ -1,0 +1,23 @@
+<div class="form-group">
+    <label for="nome">Nome</label>
+    <input type="text" class="form-control" id="nome" placeholder="Nome do Fornecedor" ng-model="fornecedor.nome">
+</div>
+<div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" class="form-control" id="email" placeholder="fornecedor@email.com" ng-model="fornecedor.email">
+</div>
+<div class="form-group">
+    <label for="telefone">Telefone</label>
+    <input type="tel" class="form-control" id="telefone" placeholder="(xx) xxxx xxxx" ng-model="fornecedor.telefone">
+</div>
+<div class="form-group">
+    <label for="segmento">Segmento</label>
+    <select id="segmento" class="form-control" ng-model="fornecedor.segmento" ng-options="segmento.nome for segmento in segmentos track by segmento.id">
+        <option value="">-- Escolha o Segmento --</option>
+    </select>
+</div>
+<div class="checkbox">
+    <label>
+        <input type="checkbox" ng-model="fornecedor.ativo"> Ativo
+    </label>
+</div>
