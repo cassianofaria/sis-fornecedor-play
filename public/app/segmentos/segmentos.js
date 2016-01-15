@@ -116,6 +116,6 @@ appSegmentos.controller("SegmentoEditController", ['$scope', '$location', 'Segme
 
 appSegmentos.factory('SegmentoFactory', ['$http', '$q', '$resource', function($http, $q, $resource) {
 
-    return $resource("http://localhost:9000/segmentos/:id",{},  {'update':{method:'PUT' }});
+    return $resource("https://sis-fornecedor-play.herokuapp.com/segmentos/:id",{},  {'update':{method:'PUT' }});
 
 }]);

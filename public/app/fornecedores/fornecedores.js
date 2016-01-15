@@ -131,6 +131,6 @@ appFornecedores.filter('linkEmail', ['$sce',function ($sce) {
 
 appFornecedores.factory('FornecedorFactory', ['$http', '$q', '$resource', function($http, $q, $resource) {
 
-    return $resource("http://localhost:9000/fornecedores/:id",{},  {'update':{method:'PUT' }});
+    return $resource("https://sis-fornecedor-play.herokuapp.com/fornecedores/:id",{},  {'update':{method:'PUT' }});
 
 }]);
